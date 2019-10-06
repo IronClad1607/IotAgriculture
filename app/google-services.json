@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "527620685602",
+    "firebase_url": "https://iotagriculture-1afa7.firebaseio.com",
+    "project_id": "iotagriculture-1afa7",
+    "storage_bucket": "iotagriculture-1afa7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527620685602:android:b17019dd5d61e7de6aaf7b",
+        "android_client_info": {
+          "package_name": "com.ironclad.iotagriculture"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "527620685602-3387d4o2qc2en0js7j062n1gv2mi1bb1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ironclad.iotagriculture",
+            "certificate_hash": "ab40533c1a67d388264d2d628514635ee1133332"
+          }
+        },
+        {
+          "client_id": "527620685602-uh63nis4883j6tl27jghi0qifst9taad.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDT2gcrDZXzYG6cbbqwJ8SMLmmdVQRtdPQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "527620685602-uh63nis4883j6tl27jghi0qifst9taad.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
