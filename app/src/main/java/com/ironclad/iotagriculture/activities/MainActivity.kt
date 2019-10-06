@@ -1,5 +1,6 @@
-package com.ironclad.iotagriculture
+package com.ironclad.iotagriculture.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +8,7 @@ import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
+import com.ironclad.iotagriculture.R
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.TimeUnit
 
@@ -24,6 +26,8 @@ class MainActivity : AppCompatActivity() {
             override fun onVerificationCompleted(p0: PhoneAuthCredential) {
                 Toast.makeText(this@MainActivity, "Verification Complete", Toast.LENGTH_LONG).show()
                 signInWithPhone(p0)
+                val intent = Intent(this@MainActivity, WeatherActivity::class.java)
+                startActivity(intent)
             }
 
             override fun onVerificationFailed(p0: FirebaseException) {
@@ -56,7 +60,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun signInWithPhone(p0: PhoneAuthCredential) {
         auth.signInWithCredential(p0)
-            .addOnCompleteListener { }
+            .addOnCompleteListener {
+            }
             .addOnFailureListener { }
             .addOnSuccessListener { }
     }
