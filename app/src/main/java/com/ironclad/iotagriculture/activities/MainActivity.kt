@@ -2,6 +2,7 @@ package com.ironclad.iotagriculture.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.FirebaseException
@@ -14,6 +15,7 @@ import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
+    var verificationCode :String = ""
     private val auth by lazy {
         FirebaseAuth.getInstance()
     }
@@ -26,11 +28,14 @@ class MainActivity : AppCompatActivity() {
             override fun onVerificationCompleted(p0: PhoneAuthCredential) {
                 Toast.makeText(this@MainActivity, "Verification Complete", Toast.LENGTH_LONG).show()
                 signInWithPhone(p0)
+                otp.text = p0.smsCode
+                btnLogin.doResult(true)
                 val intent = Intent(this@MainActivity, WeatherActivity::class.java)
                 startActivity(intent)
             }
 
             override fun onVerificationFailed(p0: FirebaseException) {
+                btnLogin.doResult(false)
                 Toast.makeText(this@MainActivity, "Verification Failed", Toast.LENGTH_LONG).show()
 
             }
@@ -39,6 +44,11 @@ class MainActivity : AppCompatActivity() {
                 super.onCodeSent(p0, p1)
 
                 Toast.makeText(this@MainActivity, "Code Sent", Toast.LENGTH_LONG).show()
+                verificationCode = p0
+                Log.d("Code","""
+                    String: $p0
+                    Token: $p1
+                """.trimIndent())
 
             }
 
@@ -53,14 +63,13 @@ class MainActivity : AppCompatActivity() {
                 this,
                 callback
             )
-
-            btnLogin.doResult(true)
         }
     }
 
     private fun signInWithPhone(p0: PhoneAuthCredential) {
         auth.signInWithCredential(p0)
             .addOnCompleteListener {
+                Log.d("Code",p0.smsCode)
             }
             .addOnFailureListener { }
             .addOnSuccessListener { }
